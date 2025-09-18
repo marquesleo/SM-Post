@@ -12,7 +12,10 @@ public class DatabaseContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=SocialMedia;User Id=sa;Password=Leo141827;")
+            //"ConnectionString": "server=localhost;uid=root;pwd=13023722;database=vestillo",
+            //Server=localhost,1433;Database=SocialMedia;User Id=sa;Password=Leo141827;
+
+            optionsBuilder.UseMySQL("server=localhost;uid=root;pwd=13023722;database=SocialMedia")
                 .UseLazyLoadingProxies();
         }
     }

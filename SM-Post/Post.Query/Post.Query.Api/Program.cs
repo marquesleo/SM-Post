@@ -11,7 +11,7 @@ using EventHandler = Post.Query.Infrastructure.Handlers.EventHandler;
 var builder = WebApplication.CreateBuilder(args);
 
 
-Action<DbContextOptionsBuilder> configureDbContext = (o => o.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+Action<DbContextOptionsBuilder> configureDbContext = (o => o.UseLazyLoadingProxies().UseMySQL(builder.Configuration.GetConnectionString("SqlServer")));
 builder.Services.AddDbContext<DatabaseContext>(configureDbContext);
 builder.Services.AddSingleton<DatabaseContextFactory>(new  DatabaseContextFactory(configureDbContext));
 
