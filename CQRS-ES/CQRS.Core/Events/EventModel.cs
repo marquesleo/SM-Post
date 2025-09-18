@@ -5,12 +5,14 @@ namespace CQRS.Core.Events;
 
 public class EventModel
 {
+   
     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
+    [BsonRepresentation(BsonType.String)]
     public string Id { get; set; }  
     
     public DateTime TimeStamp { get; set; }
-    
+
+    [BsonRepresentation(BsonType.String)]
     public Guid AggregateIdentifier { get; set; }
     
     public string AggregateType { get; set; }

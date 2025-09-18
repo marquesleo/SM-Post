@@ -40,7 +40,7 @@ public class EventJsonConverter : JsonConverter<BaseEvent>
             nameof(CommentUpdatedEvent) => JsonSerializer.Deserialize<CommentUpdatedEvent>(json, options),
             nameof(CommentRemovedEvent) => JsonSerializer.Deserialize<CommentRemovedEvent>(json, options),
             nameof(PostRemovedEvent) => JsonSerializer.Deserialize<PostRemovedEvent>(json, options),
-            _ => throw new JsonException($"Unknown type {typeDiscriminator}")
+            _ =>  throw new JsonException($"Unknown type {typeDiscriminator}")
         };
     }
 

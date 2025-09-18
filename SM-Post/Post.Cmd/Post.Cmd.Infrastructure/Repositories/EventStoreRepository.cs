@@ -2,6 +2,7 @@
 using CQRS.Core.Events;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using MongoDB.Bson;
 using Post.Cmd.Infrastructure.Config;
 
 namespace Post.Cmd.Infrastructure.Repositories;
@@ -15,6 +16,7 @@ public class EventStoreRepository  :IEventStoreRepository
     {
         var mongoClient = new MongoClient(config.Value.ConnectionString);  
         var mongoDatabase = mongoClient.GetDatabase(config.Value.Database);
+       
         _eventStoreCollection = mongoDatabase.GetCollection<EventModel>(config.Value.Collection);
         
     }
@@ -26,6 +28,6 @@ public class EventStoreRepository  :IEventStoreRepository
 
     public async Task<List<EventModel>> FindByAggregateId(Guid aggregateId)
     {
-        return await _eventStoreCollection.Find(x=> x.AggregateIdentifier == aggregateId).ToListAsync().ConfigureAwait(false);   
+        return await _eventStoreCollection.FindSync(x => x.AggregateIdentifier == aggregateId).ToListAsync().ConfigureAwait(false);
     }
 }

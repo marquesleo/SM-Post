@@ -27,6 +27,7 @@ public class PostAggregate : AggregateRoot
             Author = author,
             Message = message,
             DatePosted = DateTime.Now
+            
         });
     }
 
@@ -36,6 +37,8 @@ public class PostAggregate : AggregateRoot
         _id = @event.Id;
         _active = true;
         _author = @event.Author;
+       
+       
     }
 
     public void EditMessage(string message)

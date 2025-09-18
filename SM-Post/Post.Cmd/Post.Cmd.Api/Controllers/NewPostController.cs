@@ -21,7 +21,7 @@ public class NewPostController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> NewPostAsync(NewPostCommand command)
+    public async Task<ActionResult> NewPostAsync([FromBody] NewPostCommand command)
     {
         var id = Guid.NewGuid();
         try
@@ -32,7 +32,9 @@ public class NewPostController : ControllerBase
             await _commandDispatcher.SendAsync(command);
             return StatusCode(StatusCodes.Status201Created, new NewPostResponse()
             {
-                Message = "New Post created request completed successfully!"
+                Message = "New Post created request completed successfully!",
+                 Id = command.Id
+                
             });
         }
         catch (InvalidOperationException ex)
@@ -55,4 +57,9 @@ public class NewPostController : ControllerBase
         }
     }
 
+    [HttpGet]
+    public async Task<ActionResult> get()
+    {
+        return Ok();
+    }
 }
