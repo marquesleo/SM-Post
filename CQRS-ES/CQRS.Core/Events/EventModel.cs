@@ -13,7 +13,7 @@ public class EventModel
     public DateTime TimeStamp { get; set; }
 
     [BsonRepresentation(BsonType.String)]
-    public Guid AggregateIdentifier { get; set; }
+    public string AggregateIdentifier { get; set; }
     
     public string AggregateType { get; set; }
     

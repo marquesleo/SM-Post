@@ -28,6 +28,15 @@ public class EventStoreRepository  :IEventStoreRepository
 
     public async Task<List<EventModel>> FindByAggregateId(Guid aggregateId)
     {
-        return await _eventStoreCollection.FindSync(x => x.AggregateIdentifier == aggregateId).ToListAsync().ConfigureAwait(false);
+        try
+        {
+            return await _eventStoreCollection.FindSync(x => x.AggregateIdentifier.ToString() == aggregateId.ToString()).ToListAsync().ConfigureAwait(false);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+       
     }
 }

@@ -55,7 +55,7 @@ public class EventStore : IEventStore
                 var eventModel = new EventModel()
                 {
                     TimeStamp = DateTime.UtcNow,
-                    AggregateIdentifier = aggregateId,
+                    AggregateIdentifier = aggregateId.ToString(),
                     AggregateType = nameof(PostAggregate),
                     Version = version,
                     EventData = @event,
