@@ -30,7 +30,7 @@ public class EventStoreRepository  :IEventStoreRepository
     {
         try
         {
-            return await _eventStoreCollection.FindSync(x => x.AggregateIdentifier.ToString() == aggregateId.ToString()).ToListAsync().ConfigureAwait(false);
+            return await _eventStoreCollection.FindSync(x => x.AggregateIdentifier == aggregateId).ToListAsync().ConfigureAwait(false);
         }
         catch (Exception e)
         {

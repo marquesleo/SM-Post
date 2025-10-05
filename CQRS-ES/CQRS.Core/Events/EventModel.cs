@@ -1,19 +1,19 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace CQRS.Core.Events;
 
 public class EventModel
 {
-   
     [BsonId]
-    [BsonRepresentation(BsonType.String)]
+    [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }  
     
     public DateTime TimeStamp { get; set; }
 
     [BsonRepresentation(BsonType.String)]
-    public string AggregateIdentifier { get; set; }
+    public Guid AggregateIdentifier { get; set; }
     
     public string AggregateType { get; set; }
     
@@ -22,7 +22,5 @@ public class EventModel
     public string EventType { get; set; }   
     
     public BaseEvent EventData { get;set;}
-     
-    
-    
+        
 }
