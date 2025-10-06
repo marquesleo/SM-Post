@@ -29,7 +29,7 @@ public class EventConsumer : IEventConsumer
 
         while (true)
         {
-            var consumeResult = consumer.Consume();
+            ''var consumeResult = consumer.Consume();
 
             if (consumeResult?.Message == null) continue;
             var options = new JsonSerializerOptions

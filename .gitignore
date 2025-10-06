@@ -25,6 +25,79 @@ bld/
 packages/
 /Debug/
 /Obj/
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.log
+
+# Visual Studio / VSCode
+.vs/
+.vscode/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+*.snupkg
+project.lock.json
+project.assets.json
+artifacts/
+packages/
+*.nuget.props
+*.nuget.targets
+*.nuget.cache
+
+# Rider
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Mac-specific
+.DS_Store
+
+# Backup and temporary files
+*.tmp
+*.bak
+*.swp
+*~
+# Binários de build
+bin/
+obj/
+
+# Configurações do Visual Studio / Rider / VS Code
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Arquivos de log
+*.log
+
+# Pacotes NuGet
+*.nupkg
+*.nuget.cache
+project.assets.json
+
+# Diretórios de pacotes
+packages/
+
+# Cache de compilação
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+*.cache
+*.editorconfig
+
+# Outros
+*.g.props
+*.g.targets
+
 
 
 # Visual Studio 2015 cache/options directory
