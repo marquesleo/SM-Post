@@ -3,7 +3,9 @@ using CQRS.Core.Events;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using Post.Cmd.Infrastructure.Config;
+using Post.Common.Events;
 
 namespace Post.Cmd.Infrastructure.Repositories;
 
@@ -14,9 +16,28 @@ public class EventStoreRepository  :IEventStoreRepository
 
     public EventStoreRepository(IOptions<MongoDbConfig> config)
     {
-        var mongoClient = new MongoClient(config.Value.ConnectionString);  
+        if (!BsonClassMap.IsClassMapRegistered(typeof(BaseEvent)))
+        {
+            BsonClassMap.RegisterClassMap<BaseEvent>(cm =>
+            {
+                cm.AutoMap();
+                cm.SetIsRootClass(true);
+                cm.AddKnownType(typeof(PostCreatedEvent)); // seu evento concreto
+            });
+
+            /*BsonClassMap.RegisterClassMap<PostCreatedEvent>(cm => cm.AutoMap());
+            BsonClassMap.RegisterClassMap<BaseEvent>();
+            BsonClassMap.RegisterClassMap<PostCreatedEvent>();
+            BsonClassMap.RegisterClassMap<MessageUpdatedEvent>();
+            BsonClassMap.RegisterClassMap<PostLikedEvent>();
+            BsonClassMap.RegisterClassMap<CommentAddedEvent>();
+            BsonClassMap.RegisterClassMap<CommentUpdatedEvent>();
+            BsonClassMap.RegisterClassMap<PostRemovedEvent>();*/
+        }
+
+        var mongoClient = new MongoClient(config.Value.ConnectionString);
         var mongoDatabase = mongoClient.GetDatabase(config.Value.Database);
-       
+
         _eventStoreCollection = mongoDatabase.GetCollection<EventModel>(config.Value.Collection);
         
     }

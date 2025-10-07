@@ -60,7 +60,7 @@ public class EventStore : IEventStore
                     Version = version,
                     EventData = @event,
                     EventType = eventType,
-                    Id = Guid.NewGuid().ToString(),
+                    Id = Guid.NewGuid(),
 
                 };
 
@@ -68,7 +68,7 @@ public class EventStore : IEventStore
                 var topic = "SocialMediaPostEvents";
                 await _eventProducer.ProducerAsync(topic, @event);
             }
-         }
+        }
         catch (Exception ex)
         {
 
