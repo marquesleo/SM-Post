@@ -7,8 +7,8 @@ namespace CQRS.Core.Events;
 public class EventModel
 {
     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }  
+    [BsonRepresentation(BsonType.String)]
+    public Guid Id { get; set; }  
     
     public DateTime TimeStamp { get; set; }
 
@@ -21,6 +21,6 @@ public class EventModel
     
     public string EventType { get; set; }   
     
-    public BaseEvent EventData { get;set;}
+    public BaseEvent EventData { get; set;}
         
 }
