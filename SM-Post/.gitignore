@@ -440,3 +440,29 @@ local.properties
 *.csproj.nuget.g.targets
 project.assets.json
 project.nuget.cache
+bin/
+obj/
+
+# 🔧 Arquivos de cache do NuGet
+*.nuget.dgspec.json
+*.nuget.g.props
+*.nuget.g.targets
+project.assets.json
+project.packagespec.json
+project.nuget.cache
+
+# ⚙️ Arquivos de cache do Rider / IDE
+*.DotSettings.user
+*.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rider.project.*
+
+# 🔍 Cache de compilação
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+*.GeneratedMSBuildEditorConfig.editorconfig
+*.assets.cache
+*.AssemblyReference.cache
